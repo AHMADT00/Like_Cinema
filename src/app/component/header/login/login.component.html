@@ -1,0 +1,56 @@
+<div class="exitdev">
+  <button class="exit" mat-button mat-dialog-close>x</button>
+</div>
+<div class="formdiv">
+  <h1>LogIn</h1>
+  <p>
+    <mat-form-field appearance="outline" style="width: 79%">
+      <mat-label>Email or User name</mat-label>
+      <input [(ngModel)]="userName" matInput />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        [(ngModel)]="password"
+        [type]="hide2 ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide2 = !hide2"
+        [attr.aria-label]="'Hide2 password'"
+        [attr.aria-pressed]="hide2"
+      >
+        <mat-icon>{{ hide2 ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-dialog-actions align="end">
+      <button
+        class="login"
+        mat-dialog-close
+        (click)="loginClient()"
+        mat-stroked-button
+      >
+        LogIn
+      </button>
+    </mat-dialog-actions>
+  </p>
+  <div>You don't have account?</div>
+  <p>
+    <mat-dialog-actions align="end">
+      <button
+        class="signup"
+        (click)="openDialog()"
+        mat-stroked-button
+        mat-dialog-close
+      >
+        Sign Up Now
+      </button>
+    </mat-dialog-actions>
+  </p>
+</div>

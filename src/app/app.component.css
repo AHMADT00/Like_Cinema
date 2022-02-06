@@ -1,0 +1,38 @@
+.example-container {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  min-height: 400px;
+}
+.example-sidenav-content {
+  height: 100%;
+
+  width: 100%;
+}
+
+.example-sidenav {
+  padding: 20px;
+  position: fixed;
+  top: 79px;
+}
+.click {
+  font-size: 20px;
+  height: 45px;
+  width: 45px;
+  border: none;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  color: #ffffff;
+  background-color: #c2185b;
+  opacity: 0.9;
+  position: fixed;
+}
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* {
+  z-index: -1;
+  position: relative;
+  bottom: 45px;
+} */

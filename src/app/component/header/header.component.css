@@ -1,0 +1,53 @@
+.logo-header {
+  color: rgb(55, 115, 184);
+  font-weight: bold;
+  font-size: 40px !important;
+  width: 218px;
+  font-family: "Audiowide";
+}
+.cinema-header {
+  color: #eee;
+  font-weight: normal;
+  font-size: 27px !important;
+}
+a {
+  text-decoration: none;
+}
+.sign-up {
+  border-radius: 30px;
+  width: 126px;
+  color: white !important;
+}
+nav {
+  padding: 8px 50px;
+  background-color: #0f2133 !important;
+}
+.nav-link {
+  margin-right: 15px;
+  color: white !important;
+}
+.navbar-expand-md .navbar-collapse {
+  justify-content: space-between;
+}
+.navbar-nav li a {
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  color: #abb7c4;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 15px;
+}
+.show {
+  background-color: #0f2133;
+}
+.dropdown-divider {
+  color: #3773b8;
+  height: 3px;
+}
+.navbar-nav li a:hover {
+  color: rgb(55, 115, 184);
+}
+.btn-danger {
+  background-color: #c2185b;
+}

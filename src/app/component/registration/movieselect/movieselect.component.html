@@ -1,0 +1,59 @@
+<div class="container2">
+  <div class="card" *ngFor="let movie of movies">
+    <input
+      type="checkbox"
+      oninput="this.className = ''"
+      id="{{ movie.id }}"
+      style="display: none"
+    />
+    <label class="checkbox-img" for="{{ movie.id }}">
+      <img src="{{ movie.src }}" />
+      <div class="card__head">{{ movie.name }}</div>
+      <div class="title-in cate-in">
+        <div class="cate">
+          <span
+            *ngFor="let category of movie.category; index as index"
+            class="{{ movie.categoryColor[index] }}"
+            ><a href="#">{{ category }}</a></span
+          >
+        </div>
+      </div>
+      <div class="title-in">
+        <h4>Start Time:</h4>
+        <h4>{{ " " + movie.start }}</h4>
+        <br />
+        <h4>End Time:</h4>
+        <h4>{{ " " + movie.end }}</h4>
+        <br />
+        <h4>Date:</h4>
+        <h4>{{ " " + movie.date }}</h4>
+        <br />
+      </div>
+      <div class="radio-div">
+        <div class="radio">
+          <div class="rad-div">عدد المرافقين :</div>
+        </div>
+        <label class="rad-label radio">
+          <input type="radio" class="rad-input" name="rad12" />
+          <div class="rad-design"></div>
+          <div class="rad-text">لا يوجد</div>
+        </label>
+        <label class="rad-label radio">
+          <input type="radio" class="rad-input" name="rad12" />
+          <div class="rad-design"></div>
+          <div class="rad-text">شخص</div>
+        </label>
+        <label class="rad-label radio">
+          <input type="radio" class="rad-input" name="rad12" />
+          <div class="rad-design"></div>
+          <div class="rad-text">شخصين</div>
+        </label>
+        <label class="rad-label radio">
+          <input type="radio" class="rad-input" name="rad12" />
+          <div class="rad-design"></div>
+          <div class="rad-text">ثلاثة أشخاص</div>
+        </label>
+      </div>
+    </label>
+  </div>
+</div>

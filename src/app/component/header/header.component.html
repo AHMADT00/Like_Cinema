@@ -1,0 +1,114 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <span class="navbar-brand"
+    ><a routerLink=""
+      ><div class="logo-header">
+        <h2 class="logo-header">LIKE <b class="cinema-header">cinema</b></h2>
+      </div></a
+    ></span
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    aria-controls="navbarContent"
+    [attr.aria-expanded]="!collapsed"
+    aria-label="Toggle navigation"
+    (click)="collapsed = !collapsed"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" ngbDropdown>
+        <a
+          class="nav-link"
+          tabindex="0"
+          ngbDropdownToggle
+          id="navbarDropdown1"
+          role="button"
+        >
+          الصفحة الرئيسية
+        </a>
+        <div
+          ngbDropdownMenu
+          aria-labelledby="navbarDropdown1"
+          class="dropdown-menu"
+        >
+          <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()"
+            >LIKE CINEMA</a
+          >
+          <hr class="dropdown-divider" />
+          <a ngbDropdownItem target="_blank" href="https://likesyria.sy/"
+            >LIKE TV</a
+          >
+        </div>
+      </li>
+
+      <li class="nav-item" ngbDropdown>
+        <a
+          class="nav-link"
+          tabindex="0"
+          ngbDropdownToggle
+          id="navbarDropdown2"
+          role="button"
+        >
+          الحجز
+        </a>
+        <div
+          ngbDropdownMenu
+          aria-labelledby="navbarDropdown2"
+          class="dropdown-menu dropdown-menu-right"
+        >
+          <a
+            ngbDropdownItem
+            routerLink="/registration"
+            (click)="$event.preventDefault()"
+            >اضافة حجز جديد</a
+          >
+          <hr class="dropdown-divider" />
+          <a ngbDropdownItem href="#" (click)="$event.preventDefault()"
+            >تعديل أو حذف حجز</a
+          >
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav" style="float: right">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          target="_blank"
+          href="https://likesyria.sy/contact_us"
+          tabindex="-1"
+          aria-disabled="true"
+          >مساعدة</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          tabindex="-1"
+          aria-disabled="true"
+          (click)="openDialog('login')"
+          >تسجيل دخول</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link btn btn-danger sign-up"
+          tabindex="-1"
+          aria-disabled="true"
+          (click)="openDialog('signup')"
+          >انشاء حساب</a
+        >
+      </li>
+      <button
+        *ngIf=""
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </ul>
+  </div>
+</nav>

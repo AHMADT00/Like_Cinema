@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Movie Photo</th>
+      <th scope="col">Movie Name</th>
+      <th scope="col">Rating</th>
+      <th scope="col">catgory</th>
+      <th scope="col">catgoryColor</th>
+      <th scope="col">start</th>
+      <th scope="col">end</th>
+      <th scope="col">date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        <img [src]="movie.src" class="mr-2" style="width: 80px" />
+      </td>
+      <td>{{ movie.name }}</td>
+      <td>{{ movie.rating }}</td>
+      <td>{{ movie.category }}</td>
+      <td>{{ movie.categoryColor }}</td>
+      <td>{{ movie.start }}</td>
+      <td>{{ movie.end }}</td>
+      <td>{{ movie.date }}</td>
+    </tr>
+  </tbody>
+</table>
