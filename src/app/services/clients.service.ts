@@ -13,4 +13,10 @@ export class ClientsService {
   GetClient() {
     return this.firestore.collection('Clients').snapshotChanges();
   }
+  EditClient(client, clientid) {
+    this.firestore.doc('Clients/' + clientid).update(client);
+  }
+  DeleteClient(clientid) {
+    this.firestore.doc('Clients/' + clientid).delete();
+  }
 }

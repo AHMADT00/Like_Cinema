@@ -1,10 +1,12 @@
 export interface Client {
-  id?:string;
+  id?: string;
   userName: string;
-  email:string,
+  email: string;
   password: string;
   phoneNumber: number;
   teleNumber: number;
   iptvSub: boolean;
   isadmin: boolean;
+  checked?: boolean;
+  edit?: boolean;
 }

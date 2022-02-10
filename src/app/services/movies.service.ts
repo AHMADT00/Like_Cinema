@@ -10,4 +10,13 @@ export class MoviesService {
   GetMovies() {
     return this.firestore.collection('Movies').snapshotChanges();
   }
+  AddMovie(movie) {
+    return this.firestore.collection('Movies').add(movie);
+  }
+  EditMovie(movie, movieid) {
+    this.firestore.doc('Movies/' + movieid).update(movie);
+  }
+  DeleteMovie(movieid) {
+    this.firestore.doc('Movies/' + movieid).delete();
+  }
 }

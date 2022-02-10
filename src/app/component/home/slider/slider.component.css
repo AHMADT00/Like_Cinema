@@ -860,6 +860,9 @@ a {
   font-family: "Audiowide", sans-serif;
   font-size: 50px;
   color: rgb(0 182 237 / 69%);
+  font-weight: 700;
+  clear: both;
+  line-height: 1;
 }
 @media (max-width: 600px) {
   .title h1 {
@@ -1017,4 +1020,7 @@ mat-icon[aria-label="facebook"] {
 .cate .yell,
 .cate .blue {
   margin-right: 2px;
+}
+.slider {
+  min-height: 600px;
 }

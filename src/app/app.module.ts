@@ -7,6 +7,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { CookieService } from 'ngx-cookie-service';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,6 +20,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './component/header/signup/signup.component';
@@ -35,6 +40,7 @@ import { HomeComponent } from './component/home/home.component';
 import { environment } from '../environments/environment';
 import { MoviesService } from './services/movies.service';
 import { LoginComponent } from './component/header/login/login.component';
+import { AddmovieComponent } from './component/editmovies/addmovie/addmovie.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +56,7 @@ import { LoginComponent } from './component/header/login/login.component';
     EditclientComponent,
     SignupComponent,
     LoginComponent,
+    AddmovieComponent,
   ],
   imports: [
     NgbModule,
@@ -62,6 +69,10 @@ import { LoginComponent } from './component/header/login/login.component';
     RouterModule.forRoot(environment.routers),
 
     MatTabsModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatSliderModule,
+    MatPaginatorModule,
     MatSnackBarModule,
     MatButtonModule,
     MatSelectModule,
@@ -75,7 +86,7 @@ import { LoginComponent } from './component/header/login/login.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
   ],
-  providers: [MoviesService],
+  providers: [MoviesService, CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

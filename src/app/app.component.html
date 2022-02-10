@@ -2,10 +2,10 @@
 <mat-drawer-container
   class="example-container"
   autosize
-  *ngIf="isadmin; else notadmin"
+  *ngIf="isadmin == 'true'; else notadmin"
 >
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <h1>{{ gg }}</h1>
+    <h1>{{ "Wellcome " + userName }}</h1>
     <mat-list>
       <mat-divider></mat-divider>
       <mat-list-item
@@ -17,12 +17,6 @@
       >
       <mat-divider></mat-divider>
     </mat-list>
-    <br />
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
   </mat-drawer>
 
   <div class="example-sidenav-content" style="z-index: 1">
@@ -35,5 +29,5 @@
 </mat-drawer-container>
 <ng-template #notadmin>
   <router-outlet></router-outlet>
-</ng-template>
+</ng-template> 
 <app-footer></app-footer>

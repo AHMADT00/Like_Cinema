@@ -29,8 +29,6 @@ footer {
 }
 footer {
   background: url("../../../assets/Images/uploads/ft-bg.jpg") no-repeat;
-  background-position: center;
-  background-size: cover;
   text-align: right;
 }
 footer .flex-parent-ft {

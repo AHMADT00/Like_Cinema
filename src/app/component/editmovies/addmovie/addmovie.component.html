@@ -1,0 +1,73 @@
+<div class="exitdev">
+  <button class="exit" mat-button mat-dialog-close>x</button>
+</div>
+<div class="formdiv">
+  <h1>Add Movie</h1>
+  <p>
+    <mat-form-field appearance="outline" style="width: 80%">
+      <mat-label>Movie src</mat-label>
+      <input [(ngModel)]="src" matInput required />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline" style="width: 80%">
+      <mat-label>Movie Name</mat-label>
+      <input [(ngModel)]="name" matInput required />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill" style="width: 80%">
+      <mat-label>Category</mat-label>
+      <mat-select [formControl]="toppings" multiple required>
+        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{
+          topping
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline" style="width: 80%">
+      <mat-label>Start</mat-label>
+      <input type="time" [(ngModel)]="start" matInput required />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline" style="width: 80%">
+      <mat-label>End</mat-label>
+      <input type="time" [(ngModel)]="end" matInput required />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline" style="width: 80%">
+      <mat-label>Date</mat-label>
+      <input type="date" [(ngModel)]="date" matInput required />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-label>Rating</mat-label>
+    <mat-slider
+      thumbLabel
+      [(ngModel)]="rating"
+      [displayWith]="formatLabel"
+      tickInterval="1000"
+      step="0.1"
+      min="0"
+      max="10"
+      aria-label="units"
+      required
+    ></mat-slider>
+  </p>
+
+  <p>
+    <mat-dialog-actions align="end">
+      <button
+        type="submit"
+        class="addmovie"
+        (click)="AddMovie()"
+        mat-stroked-button
+      >
+        Add Movie
+      </button>
+    </mat-dialog-actions>
+  </p>
+</div>

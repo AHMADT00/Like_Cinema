@@ -24,7 +24,6 @@ nav {
 }
 .nav-link {
   margin-right: 15px;
-  color: white !important;
 }
 .navbar-expand-md .navbar-collapse {
   justify-content: space-between;
@@ -36,7 +35,6 @@ nav {
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
-  padding: 15px;
 }
 .show {
   background-color: #0f2133;
@@ -50,4 +48,5 @@ nav {
 }
 .btn-danger {
   background-color: #c2185b;
+  color: white;
 }

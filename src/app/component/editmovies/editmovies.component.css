@@ -1,5 +1,54 @@
+table {
+  width: 100%;
+  min-height: 300px;
+  background: none;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  background-color: #424242;
+}
+
 td,
 th {
-  text-align: center;
+  width: 10%;
+  text-align: center !important;
   vertical-align: text-top;
+}
+th {
+  padding-top: 20px !important;
+}
+.btndiv {
+  display: flex;
+  background-color: #424242;
+}
+.btndiv div {
+  width: 50%;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: flex-start;
+  padding: 0px 20px 56px 290px;
+}
+.addanddelete {
+  float: right;
+}
+.example-form-field {
+  width: 12vw;
+}
+.cate {
+  padding: 3px 5px;
+  border: 1px solid #595959;
+  border-radius: 3px;
+  margin-right: 2px;
+}
+.mat-elevation-z8,
+mat-paginator,
+.btndiv div,
+.btndiv {
+  background: none;
 }

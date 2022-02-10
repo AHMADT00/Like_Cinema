@@ -1,10 +1,10 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Client } from './../../../interfaces/client';
 import { ClientsService } from './../../../services/clients.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SignupComponent } from '../signup/signup.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { reduce } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private service: ClientsService,
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private cookieservice: CookieService
   ) {}
 
   ngOnInit(): void {
@@ -47,8 +48,13 @@ export class LoginComponent implements OnInit {
           client.password == this.password) ||
         (client.email == this.userName && client.password == this.password)
       ) {
+        this.cookieservice.set('isadmin', `${client.isadmin}`);
+        this.cookieservice.set('userName', `${client.userName}`);
         this.loggedin = true;
         this.openSnackBar(this.loggedin);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
       }
       if (this.loggedin == false) {
         this.openSnackBar(this.loggedin);

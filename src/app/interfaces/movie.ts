@@ -1,11 +1,13 @@
 export interface Movie {
-  id?:string;
+  id?: string;
   name: string;
   src: string;
   rating: string;
-  category: [string];
-  categoryColor: [string];
+  category: string[];
+  categoryColor: string[];
   start: string;
   end: string;
   date: string;
+  checked?: boolean;
+  edit?: boolean;
 }
