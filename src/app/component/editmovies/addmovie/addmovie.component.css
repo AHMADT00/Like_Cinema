@@ -58,3 +58,7 @@ input.example-right-align {
 mat-slider {
   width: 100%;
 }
+mat-icon {
+  position: relative;
+  bottom: 7px;
+}

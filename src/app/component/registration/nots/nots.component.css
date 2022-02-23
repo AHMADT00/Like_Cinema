@@ -112,7 +112,7 @@ input {
 }
 .nots h3 {
   font-weight: bold;
-  color: rgb(255, 255, 255);
+  color: rgb(5 136 179);
   line-height: 70px;
   font-size: 22px;
   font-family: "Noto Kufi Arabic", sans-serif;
@@ -126,7 +126,7 @@ input {
 .form-header2,
 .form-header {
   font-weight: bold;
-  color: rgb(255, 255, 255);
+  color: rgb(5 136 179);
   font-size: 22px;
   direction: rtl;
   text-align: right;

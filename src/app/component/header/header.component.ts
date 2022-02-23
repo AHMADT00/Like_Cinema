@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   loggedin = ' ';
   constructor(public dialog: MatDialog, private cookieservice: CookieService) {}
   ngOnInit(): void {
-    this.loggedin = this.cookieservice.get('isadmin');
+    this.loggedin = environment.client.isadmin
   }
   logout() {
     this.cookieservice.deleteAll();

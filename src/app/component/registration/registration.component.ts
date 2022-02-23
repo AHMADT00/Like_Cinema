@@ -1,4 +1,12 @@
+import { RegistrationService } from './../../services/registration.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ClientsService } from 'src/app/services/clients.service';
+import { Client } from './../../interfaces/client';
+import { SelectedMovie } from './../../interfaces/selected-movie';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { Registration } from 'src/app/interfaces/registration';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-registration',
@@ -6,48 +14,107 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
+  clients: Client[] = [];
+  datafromchild: SelectedMovie[] = [];
+  registration!: Registration;
+  userNameFormControl = new FormControl('', [Validators.required]);
+  phoneNumberFormControl = new FormControl('', [Validators.required]);
+  carPlateFormControl = new FormControl('', [Validators.required]);
   currentTab = 0;
-  ahmad = true;
-  constructor() {}
+  tab = true;
+  next = false;
+  userId!: string;
+  prevBtn = 'none';
+  nextBtn = 'Next';
+  userName!: string;
+  phoneNumber!: string;
+  carPlate!: string;
+  step;
+  step1;
+  routerLink;
+  SnackBar = 'error';
+
+  constructor(
+    private clientservice: ClientsService,
+    private _snackBar: MatSnackBar,
+    private register: RegistrationService
+  ) {}
 
   ngOnInit(): void {
+    this.userId = environment.client.userId;
+    console.log(this.userId);
     this.showTab(this.currentTab);
+    this.clientservice.GetClient().subscribe((res) => {
+      this.clients = res.map((e: any) => {
+        const data = e.payload.doc.data();
+        data.id = e.payload.doc.id;
+        return data;
+      });
+    });
   }
 
-  showTab(n) {
-    var x = document.getElementsByClassName('tab');
-    // x[n].style.display = 'block';
-    if (n == 0) {
-      this.ahmad = true;
+  Valid() {
+    this.clients.forEach((client) => {
+      if (
+        client.id == this.userId &&
+        this.userNameFormControl.value == client.userName
+      ) {
+        this.SnackBar = 'success';
+      }
+    });
+    if (this.currentTab == 1 && this.SnackBar == 'success') {
+      this.routerLink = '';
     } else {
-      this.ahmad = false;
+      this.routerLink = undefined;
     }
-    if (n == 0) {
-      document.getElementById('prevBtn')!.style.display = 'none';
-    } else {
-      document.getElementById('prevBtn')!.style.display = 'inline';
+  }
+  Submit() {
+    if (this.SnackBar == 'success') {
+      this.registration = {
+        clientId: this.userId,
+        clientUserName: this.userNameFormControl.value,
+        clientPhoneNumber: this.phoneNumberFormControl.value,
+        clientCarPlate: this.carPlateFormControl.value,
+        selectedMovies: this.datafromchild,
+      };
+      this.register.AddRegistration(this.registration);
     }
-    if (n == x.length - 1) {
-      document.getElementById('nextBtn')!.innerHTML = 'Submit';
-    } else {
-      document.getElementById('nextBtn')!.innerHTML = 'Next';
-    }
-    this.scrollToTop();
-
-    this.fixStepIndicator(n);
+    this.openSnackBar(this.SnackBar);
   }
 
   nextPrev(n) {
-    if (this.validateForm()) {
-      if (n == 1) {
-        this.ahmad = false;
-      } else {
-        this.ahmad = true;
+    if (this.validateForm() || n == -1) {
+      if (this.currentTab < 1 || n == -1) {
+        this.currentTab = this.currentTab + n;
       }
-      this.currentTab = this.currentTab + n;
+
+      if (n == 1 && this.nextBtn == 'next') {
+        this.next = true;
+      } else if (n == 1 && this.nextBtn == 'Submit') {
+        this.Submit();
+      }
+      this.showTab(this.currentTab);
     }
     this.scrollToTop();
-    this.showTab(this.currentTab);
+  }
+  showTab(n) {
+    var x = document.getElementsByClassName('tab');
+    if (n == 0) {
+      this.tab = true;
+    } else {
+      this.tab = false;
+    }
+    if (n == 0) {
+      this.prevBtn = 'none';
+    } else {
+      this.prevBtn = 'inline';
+    }
+    if (n == x.length - 1) {
+      this.nextBtn = 'Submit';
+    } else if (n == 0) {
+      this.nextBtn = 'Next';
+    }
+    this.fixStepIndicator();
   }
 
   scrollToTop() {
@@ -59,31 +126,87 @@ export class RegistrationComponent implements OnInit {
       y,
       i,
       valid = true;
-    x = document.getElementsByClassName('tab');
-    y = x[this.currentTab].getElementsByTagName('input');
+    if (this.currentTab == 1) {
+      x = document.getElementsByClassName('tab');
+      y = x[this.currentTab].getElementsByTagName('input');
 
-    for (i = 0; i < y.length; i++) {
-      if (y[i].value == '') {
-        y[i].className += ' invalid';
+      for (i = 0; i < y.length; i++) {
+        if (y[i].value == '') {
+          y[i].className += ' invalid';
 
-        valid = false;
+          valid = false;
+        }
       }
-    }
-
-    if (valid) {
-      document.getElementsByClassName('step')[this.currentTab].className +=
-        ' finish';
+    } else if (this.currentTab == 0) {
+      if (this.datafromchild.length == 0) {
+        valid = false;
+        this.openSnackBar('selectmovie');
+      }
     }
     return valid;
   }
 
-  fixStepIndicator(n) {
-    var i,
-      x = document.getElementsByClassName('step');
-    for (i = 0; i < x.length; i++) {
-      x[i].className = x[i].className.replace(' active', '');
+  fixStepIndicator() {
+    if (this.currentTab == 0) {
+      this.step = 'step finish';
+      this.step1 = 'step';
+    } else {
+      this.step = 'step';
+      this.step1 = 'step finish';
     }
-
-    x[n].className += ' active';
+  }
+  openSnackBar(x) {
+    if (x == 'success') {
+      this._snackBar.openFromComponent(RegistrationSuccessComponent, {
+        duration: 7000,
+        panelClass: ['snackbar'],
+      });
+    } else if (x == 'error') {
+      this._snackBar.openFromComponent(RegistrationErrorComponent, {
+        duration: 7000,
+        panelClass: ['snackbar'],
+      });
+    } else if (x == 'selectmovie') {
+      this._snackBar.openFromComponent(SelectMovieErrorComponent, {
+        duration: 7000,
+        panelClass: ['snackbar'],
+      });
+    }
   }
 }
+@Component({
+  selector: 'registration-success-snack',
+  templateUrl: 'registration-success-snack.html',
+  styles: [
+    `
+      span {
+        color: #c2185b;
+      }
+    `,
+  ],
+})
+export class RegistrationSuccessComponent {}
+@Component({
+  selector: 'registration-error-snack',
+  templateUrl: 'registration-error-snack.html',
+  styles: [
+    `
+      span {
+        color: #c2185b;
+      }
+    `,
+  ],
+})
+export class RegistrationErrorComponent {}
+@Component({
+  selector: 'selectmovie-error-snack',
+  templateUrl: 'selectmovie-error-snack.html',
+  styles: [
+    `
+      span {
+        color: #c2185b;
+      }
+    `,
+  ],
+})
+export class SelectMovieErrorComponent {}

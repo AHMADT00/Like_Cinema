@@ -4,6 +4,7 @@
   font-size: 40px !important;
   width: 218px;
   font-family: "Audiowide";
+  margin: 0px 20px 0px 0px;
 }
 .cinema-header {
   color: #eee;
@@ -19,8 +20,11 @@ a {
   color: white !important;
 }
 nav {
-  padding: 8px 50px;
-  background-color: #0f2133 !important;
+  padding: 40px 50px 0px;
+  background-color: #0f213300 !important;
+  display: flex;
+  align-items: flex-end;
+  /* #0f2133 */
 }
 .nav-link {
   margin-right: 15px;

@@ -7,11 +7,16 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddmovieComponent } from './addmovie/addmovie.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+  AngularFireStorage,
+} from '@angular/fire/compat/storage';
 
 let undoMovies: Movie[] = [];
 let undoEditMovies: {};
 let undoMoviesId;
-
+let undo = false;
 @Component({
   selector: 'app-editmovies',
   templateUrl: './editmovies.component.html',
@@ -42,13 +47,16 @@ export class EditmoviesComponent implements OnInit {
     'Action',
   ];
   deleteAll = false;
+  ref!: AngularFireStorageReference;
+  task!: AngularFireUploadTask;
   dataSource!: MatTableDataSource<Movie>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
     private service: MoviesService,
     private dialog: MatDialog,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private firestorage: AngularFireStorage
   ) {}
   ngOnInit() {
     this.service.GetMovies().subscribe(
@@ -69,9 +77,37 @@ export class EditmoviesComponent implements OnInit {
       }
     );
   }
+  formatLabel(value: number) {
+    return value;
+  }
   Edit(row, id) {
+    row.categoryColor = [];
+    row.category.forEach((category) => {
+      switch (category) {
+        case 'Action':
+          row.categoryColor.push('blue');
+          break;
+        case 'Fantasy':
+          row.categoryColor.push('pink');
+          break;
+        case 'Science':
+          row.categoryColor.push('green');
+          break;
+        case 'Fiction':
+          row.categoryColor.push('purple');
+          break;
+        case 'Animation':
+          row.categoryColor.push('red');
+          break;
+        case 'Comedy':
+          row.categoryColor.push('yell');
+          break;
+        case 'Adventure':
+          row.categoryColor.push('orange');
+          break;
+      }
+    });
     if (row.edit == false) {
-      undoMoviesId = id;
       undoEditMovies = {
         name: row.name,
         src: row.src,
@@ -82,13 +118,18 @@ export class EditmoviesComponent implements OnInit {
         end: row.end,
         date: row.date,
       };
+      undoMoviesId = id;
+      this.startto24(row);
+      this.endto24(row);
+      row.date = row.date.replace(/\//g, '-');
       row.edit = true;
-    } else if (row.edit == true) {
+    } else {
       row.edit = false;
-      this.openSnackBar('editsuccess');
-      this.to12(row)
+      this.startto12(row);
+      this.endto12(row);
+      row.date = row.date.replace(/-/g, '/');
       this.service.EditMovie(row, id);
-      this.to24(row)
+      this.openSnackBar('editsuccess');
     }
   }
   AddtoDelete(n) {
@@ -159,6 +200,16 @@ export class EditmoviesComponent implements OnInit {
           this.movies.forEach((movie) => {
             if (movie.id == element) {
               undoMovies.push(movie);
+              this.ref = this.firestorage.refFromURL(movie.src);
+              // this.ref.getMetadata().subscribe((res) => {
+              //   undoFile = res;
+              // });
+              let x = element;
+              setTimeout(() => {
+                if (undo == false) {
+                  this.ref.delete();
+                }
+              }, 6000);
             }
           });
           this.service.DeleteMovie(element);
@@ -200,17 +251,51 @@ export class EditmoviesComponent implements OnInit {
       });
     }
   }
-  to12(n) {
+  endto12(n) {
     var H = +n.end.substr(0, 2);
     var h = H % 12 || 12;
     var ampm = H < 12 || H === 24 ? ' AM' : ' PM';
     n.end = h + n.end.substr(2, 3) + ampm;
   }
-  to24(n){
-    var H = +n.end.substr(5, 3);
+  endto24(n) {
+    var ampm = n.end.substr(-2, 2);
+    if (ampm == 'AM') {
+      n.end = n.end.slice(0, -3);
+      if (n.end.length < 5 && n.end.slice(0, 2) != '12') {
+        n.end = '0' + n.end;
+      } else if (n.end.slice(0, 2) == '12') {
+        n.end = '00' + n.end.slice(n.end.search(/:/), n.end.length);
+      }
+    } else if (ampm == 'PM' && n.end.slice(0, -6) == '12') {
+      n.end = '12' + n.end.slice(n.end.search(/:/), -3);
+    } else {
+      var x = n.end.search(/:/);
+      var h = +n.end.slice(0, x) + 12;
+      n.end = h + n.end.slice(x, -3);
+    }
+  }
+  startto12(n) {
+    var H = +n.start.substr(0, 2);
     var h = H % 12 || 12;
     var ampm = H < 12 || H === 24 ? ' AM' : ' PM';
-    n.end = h + n.end.substr(2, 3) + ampm;
+    n.start = h + n.start.substr(2, 3) + ampm;
+  }
+  startto24(n) {
+    var ampm = n.start.substr(-2, 2);
+    if (ampm == 'AM') {
+      n.start = n.start.slice(0, -3);
+      if (n.start.length < 5 && n.start.slice(0, 2) != '12') {
+        n.start = '0' + n.start;
+      } else if (n.start.slice(0, 2) == '12') {
+        n.start = '00' + n.start.slice(n.start.search(/:/), n.start.length);
+      }
+    } else if (ampm == 'PM' && n.start.slice(0, -6) == '12') {
+      n.start = '12' + n.start.slice(n.start.search(/:/), -3);
+    } else {
+      var x = n.start.search(/:/);
+      var h = +n.start.slice(0, x) + 12;
+      n.start = h + n.start.slice(x, -3);
+    }
   }
 }
 
@@ -258,13 +343,24 @@ export class EmptyDeleteComponent {}
   ],
 })
 export class DeleteSuccessComponent {
-  constructor(private movieser: MoviesService) {}
+  ref!: AngularFireStorageReference;
+  constructor(
+    private movieser: MoviesService,
+    private firestorage: AngularFireStorage
+  ) {}
 
   UndoDelete() {
+    // console.log(undoFile);
+    // this.ref = this.firestorage.ref(`Movie Images/${undoFile.name}`);
+    // this.ref.put(undoFile);
+    undo = true;
     undoMovies.forEach((movie) => {
       this.movieser.AddMovie(movie);
     });
     undoMovies = [];
+    setTimeout(() => {
+      undo = false;
+    }, 5000);
   }
 }
 @Component({

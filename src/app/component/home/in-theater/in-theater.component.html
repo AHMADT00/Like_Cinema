@@ -1,0 +1,20 @@
+<div class="in-theater">
+  <div class="title">
+    <h2>In Theater:</h2>
+    <hr />
+  </div>
+  <mat-tab-group
+    [selectedIndex]="selected.value"
+    (selectedIndexChange)="selected.setValue($event)"
+  >
+    <mat-tab *ngFor="let tab of day; let index = index" [label]="tab.tab">
+      <div class="red">
+        <div *ngFor="let movie of movies">
+          <div *ngIf="movie.date == tab.date">
+            <img class="image" [src]="movie.src" />
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

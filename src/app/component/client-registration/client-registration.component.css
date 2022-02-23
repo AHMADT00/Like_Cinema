@@ -14,7 +14,6 @@ td,
 th {
   width: 10%;
   text-align: center !important;
-  vertical-align: text-top;
 }
 th {
   padding-top: 20px !important;
@@ -39,19 +38,17 @@ th {
 .example-form-field {
   width: 12vw;
 }
-.cate {
-  padding: 3px 5px;
-  border: 1px solid #595959;
-  border-radius: 3px;
-  margin-right: 2px;
-}
 .mat-elevation-z8,
 mat-paginator,
 .btndiv div,
 .btndiv {
   background: none;
 }
-.ratingSlider {
-  position: relative;
-  bottom: 17px;
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  padding: 20px;
+}
+.mat-divider {
+  border-top-color: rgb(255 255 255 / 49%);
 }

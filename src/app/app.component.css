@@ -1,18 +1,19 @@
 .example-container {
   width: 100%;
-  background: url("../assets/Images/uploads/ft-bg.jpg");
+  background: none;
   min-height: 400px;
 }
 .example-sidenav-content {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .example-sidenav {
   padding: 20px;
   background: url("../assets/Images/uploads/ft-bg.jpg");
   position: fixed;
-  top: 79px;
+  top: 87px;
 }
 .click {
   font-size: 20px;

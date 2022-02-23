@@ -1,0 +1,47 @@
+:host ::ng-deep .p-tabview-title {
+  margin: 0px auto;
+  width: auto;
+  font-family: "Audiowide";
+}
+.in-theater {
+  background: url(../../../../assets/Images/uploads/DriveIN.jpg);
+  height: 900px;
+  width: auto;
+  background-position: center;
+  background-size: cover;
+  padding: 40px;
+}
+.image {
+  width: 245px;
+  height: 345px;
+  padding-right: 7px;
+}
+.title h2 {
+  font-family: "Audiowide";
+  font-size: 36px;
+  font-weight: bold;
+  color: #0588b5;
+}
+.title hr {
+  height: 4px;
+  width: 230px;
+  border-radius: 146px;
+  color: #6c757d;
+  opacity: 1;
+}
+:host ::ng-deep .mat-tab-header {
+  width: 60%;
+  margin: 0px 20% 25px;
+}
+.red {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+:host ::ng-deep .mat-tab-label .mat-tab-label-content {
+  font-family: "Audiowide";
+}
+:host ::ng-deep .mat-tab-label-active,
+:host ::ng-deep .mat-tab-label .mat-tab-label-content:hover {
+  color: #ff006b;
+}

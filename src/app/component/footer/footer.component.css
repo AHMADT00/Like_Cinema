@@ -28,11 +28,11 @@ footer {
   display: block;
 }
 footer {
-  background: url("../../../assets/Images/uploads/ft-bg.jpg") no-repeat;
+  background: #7674741a;
   text-align: right;
 }
 footer .flex-parent-ft {
-  padding: 80px 0 60px 0;
+  padding: 45px 0 35px 0;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
@@ -126,7 +126,7 @@ footer .ft-copyright {
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border-top: 1px solid #405266;
   padding-top: 20px;
   padding-bottom: 10px;

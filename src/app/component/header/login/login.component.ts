@@ -1,7 +1,7 @@
 import { CookieService } from 'ngx-cookie-service';
 import { Client } from './../../../interfaces/client';
 import { ClientsService } from './../../../services/clients.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SignupComponent } from '../signup/signup.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  rememberme = false;
   clients: Client[] = [];
   userName!: string;
   password!: string;
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private cookieservice: CookieService
   ) {}
-
+  
   ngOnInit(): void {
     this.service.GetClient().subscribe(
       (res) => {
@@ -50,6 +51,8 @@ export class LoginComponent implements OnInit {
       ) {
         this.cookieservice.set('isadmin', `${client.isadmin}`);
         this.cookieservice.set('userName', `${client.userName}`);
+        this.cookieservice.set('userId', `${client.id}`);
+        this.cookieservice.set('rememberme', `${this.rememberme}`);
         this.loggedin = true;
         this.openSnackBar(this.loggedin);
         setTimeout(() => {

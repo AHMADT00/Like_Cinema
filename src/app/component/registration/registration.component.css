@@ -1,33 +1,11 @@
 #regForm {
-  background: url(../../../assets/Images/uploads/ft-bg.jpg) !important ;
+  background: none;
   font-family: Raleway;
   padding: 40px;
   width: 100%;
   min-width: 300px;
 }
 
-form .tab input {
-  padding: 10px;
-  margin: 0px 25%;
-  width: 50%;
-  font-size: 17px;
-  font-family: Raleway;
-  border: 1px solid #aaaaaa;
-  border-radius: 15px;
-  text-align: center;
-}
-@media (max-width: 600px) {
-  form .tab input {
-    margin: 0px 15%;
-    width: 70%;
-  }
-}
-/* Mark input boxes that gets an error on validation: */
-input.invalid {
-  background-color: #ffdddd;
-}
-
-/* Hide all steps by default: */
 ul {
   list-style-type: square;
 }
@@ -45,12 +23,9 @@ p {
 }
 
 button {
-  background-color: #04aa6d;
-  color: #ffffff;
-  border: none;
   padding: 10px 20px;
   font-size: 17px;
-  font-family: Raleway;
+  font-family: "Audiowide";
   cursor: pointer;
 }
 
@@ -59,8 +34,8 @@ button:hover {
 }
 
 #prevBtn {
-  background-color: #bbbbbb;
   margin-right: 5px;
+  color: #ddd;
 }
 
 /* Make circles that indicate the steps of the form: */
@@ -78,56 +53,11 @@ button:hover {
 .step.active {
   opacity: 1;
 }
-
-/* Mark the steps that are finished and valid: */
-.step.finish {
-  background-color: #04aa6d;
-}
-.nav-div {
-  width: 100%;
-  height: 106px;
-  background-color: #84848429;
-}
-
-footer {
-  background: none;
-  background-color: #84848429;
-}
-footer .ft-copyright {
-  background-color: #84848429;
-}
-footer .ft-copyright .backtotop a {
-  color: white;
-}
-input {
-  border-radius: 10px;
-}
-.nots {
-  direction: rtl;
-  text-align: right;
-  margin: 50px;
-  font-family: "Noto Kufi Arabic", sans-serif;
-}
-.nots1 {
-  margin-top: 70px;
-}
-.nots h3 {
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  line-height: 70px;
-  font-size: 22px;
-  font-family: "Noto Kufi Arabic", sans-serif;
-}
-.nots ul li {
-  font-size: 18px;
-  color: rgb(160, 160, 160);
-  line-height: 31px;
-}
 .form-header1,
 .form-header2,
 .form-header {
   font-weight: bold;
-  color: rgb(255, 255, 255);
+  color: rgb(5 136 179);
   font-size: 22px;
   direction: rtl;
   text-align: right;
@@ -612,4 +542,24 @@ input[type="checkbox"][id^="myCheckbox"] {
 .cate .yell,
 .cate .blue {
   margin-right: 2px;
+}
+.example-form {
+  min-width: 150px;
+  width: 50%;
+  margin: 0px 25%;
+}
+
+.example-full-width {
+  width: 100%;
+  margin-bottom: 8px;
+}
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  text-align: center;
+}
+.step.finish {
+  background-color: #b01855;
+  opacity: 1;
+}
+:host ::ng-deep .mat-stroked-button.mat-warn {
+  color: #ae1653;
 }

@@ -2,44 +2,79 @@
   <div class="title">
     <h1>Drive In Cinema</h1>
   </div>
-  <div class="tab" [style.display]="ahmad ? 'block' : 'none'">
+  <div class="tab" [style.display]="tab ? 'block' : 'none'">
     <div class="form-header1">اضغط على الفلم المطلوب مشاهدته ليتم تحديده</div>
-    <app-movieselect></app-movieselect>
+    <app-movieselect
+      [next]="next"
+      (eventfromchild)="datafromchild = $event"
+    ></app-movieselect>
   </div>
-  <div class="tab" [style.display]="ahmad ? 'none' : 'block'">
+  <div class="tab" [style.display]="tab ? 'none' : 'block'">
     <div class="form-header2">معلومات شخصية :</div>
-    <p>
-      <input
-        placeholder="اسم المستخدم"
-        oninput="this.className = ''"
-        name="username"
-      />
-    </p>
-    <p>
-      <input
-        placeholder="رقم الموبايل"
-        oninput="this.className = ''"
-        name="phone"
-      />
-    </p>
-    <p>
-      <input
-        placeholder="رقم لوحة السيارة"
-        oninput="this.className = ''"
-        name="carnumber"
-      />
-    </p>
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>User Name</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="userNameFormControl"
+          placeholder="Ex. Mia"
+          (change)="Valid()"
+        />
+        <mat-error *ngIf="userNameFormControl.hasError('required')">
+          User Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input
+          type="phone"
+          matInput
+          [formControl]="phoneNumberFormControl"
+          placeholder="Ex. 09********"
+        />
+        <mat-error *ngIf="phoneNumberFormControl.hasError('required')">
+          Phone Number is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Car Plate</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="carPlateFormControl"
+          placeholder="Ex. 123456"
+        />
+        <mat-error *ngIf="carPlateFormControl.hasError('required')">
+          Car Plate is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
   </div>
   <app-nots></app-nots>
   <div class="nextandprev" style="overflow: auto">
     <div style="float: right">
-      <button type="button" id="prevBtn" (click)="nextPrev(-1)">Previous</button>
-      <button type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
+      <button
+        mat-stroked-button
+        id="prevBtn"
+        (click)="nextPrev(-1)"
+        [style.display]="prevBtn"
+      >
+        Previous
+      </button>
+      <button
+        mat-stroked-button
+        color="warn"
+        id="nextBtn"
+        (click)="nextPrev(1)"
+        [routerLink]="routerLink"
+      >
+        {{ nextBtn }}
+      </button>
     </div>
   </div>
-  <!-- Circles which indicates the steps of the form: -->
   <div style="text-align: center; margin-top: 40px">
-    <span class="step"></span>
-    <span class="step"></span>
+    <span [class]="step"></span>
+    <span [class]="step1"></span>
   </div>
 </form>

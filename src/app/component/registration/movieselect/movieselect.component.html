@@ -1,10 +1,11 @@
 <div class="container2">
-  <div class="card" *ngFor="let movie of movies">
+  <div class="card" *ngFor="let movie of movies; index as index">
     <input
       type="checkbox"
-      oninput="this.className = ''"
+      [(ngModel)]="movie.checked"
       id="{{ movie.id }}"
       style="display: none"
+      (click)="UnSelect(movie, index)"
     />
     <label class="checkbox-img" for="{{ movie.id }}">
       <img src="{{ movie.src }}" />
@@ -33,26 +34,20 @@
         <div class="radio">
           <div class="rad-div">عدد المرافقين :</div>
         </div>
-        <label class="rad-label radio">
-          <input type="radio" class="rad-input" name="rad12" />
-          <div class="rad-design"></div>
-          <div class="rad-text">لا يوجد</div>
-        </label>
-        <label class="rad-label radio">
-          <input type="radio" class="rad-input" name="rad12" />
-          <div class="rad-design"></div>
-          <div class="rad-text">شخص</div>
-        </label>
-        <label class="rad-label radio">
-          <input type="radio" class="rad-input" name="rad12" />
-          <div class="rad-design"></div>
-          <div class="rad-text">شخصين</div>
-        </label>
-        <label class="rad-label radio">
-          <input type="radio" class="rad-input" name="rad12" />
-          <div class="rad-design"></div>
-          <div class="rad-text">ثلاثة أشخاص</div>
-        </label>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+        >
+          <mat-radio-button
+            #id
+            class="example-radio-button"
+            *ngFor="let passenger of passengers"
+            [value]="passenger"
+            (click)="select(passenger, movie, index)"
+          >
+            {{ passenger }}
+          </mat-radio-button>
+        </mat-radio-group>
       </div>
     </label>
   </div>

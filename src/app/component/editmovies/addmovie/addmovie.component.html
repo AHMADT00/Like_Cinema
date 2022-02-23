@@ -4,9 +4,15 @@
 <div class="formdiv">
   <h1>Add Movie</h1>
   <p>
-    <mat-form-field appearance="outline" style="width: 80%">
-      <mat-label>Movie src</mat-label>
-      <input [(ngModel)]="src" matInput required />
+    <mat-form-field appearance="outline" style="width: 80%"
+      ><mat-label>Upload movie photo</mat-label>
+      <ngx-mat-file-input
+        name="imgFile"
+        [(ngModel)]="selectedFile"
+        (change)="chooseFile(selectedFile)"
+      >
+        <mat-icon ngxMatFileInputIcon>image</mat-icon></ngx-mat-file-input
+      >
     </mat-form-field>
   </p>
   <p>
@@ -57,7 +63,6 @@
       required
     ></mat-slider>
   </p>
-
   <p>
     <mat-dialog-actions align="end">
       <button

@@ -28,12 +28,16 @@
       </button>
     </mat-form-field>
   </p>
+  <div
+    class="rememberme"
+  >
+    <mat-slide-toggle [(ngModel)]="rememberme">Remember Me</mat-slide-toggle>
+  </div>
   <p>
     <mat-dialog-actions align="end">
       <button
         type="submit"
         class="login"
-        
         (click)="loginClient()"
         mat-stroked-button
       >

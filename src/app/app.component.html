@@ -16,6 +16,13 @@
         ><a routerLink="admin/likeClients">Like Clients</a></mat-list-item
       >
       <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
+      <mat-list-item
+        ><a routerLink="admin/clientRegistration"
+          >Like Clients Registration</a
+        ></mat-list-item
+      >
+      <mat-divider></mat-divider>
     </mat-list>
   </mat-drawer>
 
@@ -24,10 +31,11 @@
       <mat-icon aria-hidden="false" aria-label="Example home icon"
         >sort</mat-icon
       ></button
-    ><router-outlet></router-outlet>
+    ><router-outlet (activate)="onActivate($event)"></router-outlet>
   </div>
 </mat-drawer-container>
 <ng-template #notadmin>
-  <router-outlet></router-outlet>
-</ng-template> 
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
+</ng-template>
+
 <app-footer></app-footer>

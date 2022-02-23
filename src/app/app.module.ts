@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { CookieService } from 'ngx-cookie-service';
@@ -24,6 +25,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { TabViewModule } from 'primeng/tabview';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatRippleModule } from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './component/header/signup/signup.component';
@@ -41,6 +51,8 @@ import { environment } from '../environments/environment';
 import { MoviesService } from './services/movies.service';
 import { LoginComponent } from './component/header/login/login.component';
 import { AddmovieComponent } from './component/editmovies/addmovie/addmovie.component';
+import { InTheaterComponent } from './component/home/in-theater/in-theater.component';
+import { ClientRegistrationComponent } from './component/client-registration/client-registration.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +69,8 @@ import { AddmovieComponent } from './component/editmovies/addmovie/addmovie.comp
     SignupComponent,
     LoginComponent,
     AddmovieComponent,
+    InTheaterComponent,
+    ClientRegistrationComponent,
   ],
   imports: [
     NgbModule,
@@ -74,6 +88,7 @@ import { AddmovieComponent } from './component/editmovies/addmovie/addmovie.comp
     MatSliderModule,
     MatPaginatorModule,
     MatSnackBarModule,
+    NgxMatFileInputModule,
     MatButtonModule,
     MatSelectModule,
     MatListModule,
@@ -82,9 +97,18 @@ import { AddmovieComponent } from './component/editmovies/addmovie/addmovie.comp
     MatDialogModule,
     MatIconModule,
     MatCheckboxModule,
+    CarouselModule,
+    ButtonModule,
+    RippleModule,
+    ScrollTopModule,
+    TabViewModule,
+    MatRadioModule,
+    MatSlideToggleModule,
+    MatRippleModule,
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireStorageModule,
   ],
   providers: [MoviesService, CookieService],
   bootstrap: [AppComponent],

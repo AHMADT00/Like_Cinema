@@ -1,4 +1,3 @@
-import { Client } from './../app/interfaces/client';
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
@@ -6,6 +5,7 @@ import { HomeComponent } from 'src/app/component/home/home.component';
 import { RegistrationComponent } from 'src/app/component/registration/registration.component';
 import { EditclientComponent } from 'src/app/component/editclient/editclient.component';
 import { EditmoviesComponent } from 'src/app/component/editmovies/editmovies.component';
+import { ClientRegistrationComponent } from 'src/app/component/client-registration/client-registration.component';
 
 export const environment = {
   production: false,
@@ -22,7 +22,17 @@ export const environment = {
     { path: 'registration', component: RegistrationComponent },
     { path: 'admin/editMovies', component: EditmoviesComponent },
     { path: 'admin/likeClients', component: EditclientComponent },
+    {
+      path: 'admin/clientRegistration',
+      component: ClientRegistrationComponent,
+    },
   ],
+  client: {
+    isadmin: '',
+    userName: '',
+    rememberme: '',
+    userId: '',
+  },
 };
 
 /*
