@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-light" [class]="fixed">
   <span class="navbar-brand"
     ><a routerLink=""
       ><div class="logo-header">
@@ -44,7 +44,11 @@
         </div>
       </li>
 
-      <li class="nav-item" ngbDropdown>
+      <li
+        class="nav-item"
+        ngbDropdown
+        *ngIf="loggedin == 'true' || loggedin == 'false'"
+      >
         <a
           class="nav-link"
           tabindex="0"

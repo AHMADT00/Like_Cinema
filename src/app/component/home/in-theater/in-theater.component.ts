@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Movie } from 'src/app/interfaces/movie';
@@ -10,6 +11,16 @@ export interface x {
   selector: 'app-in-theater',
   templateUrl: './in-theater.component.html',
   styleUrls: ['./in-theater.component.css'],
+  animations: [
+    trigger('fade', [
+      transition('void=>*,*=>void', [
+        style({
+          opacity: 1,
+        }),
+        animate(2000, style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class InTheaterComponent implements OnInit {
   day: x[] = [];

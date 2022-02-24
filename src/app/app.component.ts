@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
     this.isadmin = environment.client.isadmin;
     this.userName = environment.client.userName;
     this.rememberme = environment.client.rememberme;
-    console.log('hi');
     if (this.rememberme != 'true') {
       setTimeout(() => {
         this.cookieservice.deleteAll();

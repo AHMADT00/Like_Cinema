@@ -40,9 +40,7 @@ nav {
   text-transform: uppercase;
   cursor: pointer;
 }
-.show {
-  background-color: #0f2133;
-}
+
 .dropdown-divider {
   color: #3773b8;
   height: 3px;
@@ -53,4 +51,15 @@ nav {
 .btn-danger {
   background-color: #c2185b;
   color: white;
+}
+.header-fixed {
+  background: #0f2133ed !important;
+  padding: 23px 50px;
+}
+.navbar-brand {
+  margin-right: 2rem;
+}
+.dropdown-menu {
+  background-color: #132333f5;
+  padding: 25px 11px;
 }

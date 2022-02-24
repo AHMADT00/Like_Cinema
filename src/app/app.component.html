@@ -32,10 +32,10 @@
         >sort</mat-icon
       ></button
     ><router-outlet (activate)="onActivate($event)"></router-outlet>
+    <app-footer></app-footer>
   </div>
 </mat-drawer-container>
 <ng-template #notadmin>
   <router-outlet (activate)="onActivate($event)"></router-outlet>
+  <app-footer></app-footer>
 </ng-template>
-
-<app-footer></app-footer>

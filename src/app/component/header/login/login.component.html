@@ -1,12 +1,12 @@
 <div class="exitdev">
-  <button class="exit" mat-button mat-dialog-close>x</button>
+  <button class="exit" mat-button mat-dialog-close>✖</button>
 </div>
 <div class="formdiv">
   <h1>LogIn</h1>
   <p>
     <mat-form-field appearance="outline" style="width: 79%">
       <mat-label>Email or User name</mat-label>
-      <input [(ngModel)]="userName" matInput />
+      <input [(ngModel)]="userName" matInput required />
     </mat-form-field>
   </p>
   <p>
@@ -16,6 +16,7 @@
         matInput
         [(ngModel)]="password"
         [type]="hide2 ? 'password' : 'text'"
+        required
       />
       <button
         mat-icon-button
@@ -28,9 +29,7 @@
       </button>
     </mat-form-field>
   </p>
-  <div
-    class="rememberme"
-  >
+  <div class="rememberme">
     <mat-slide-toggle [(ngModel)]="rememberme">Remember Me</mat-slide-toggle>
   </div>
   <p>

@@ -21,19 +21,22 @@
 >
   <ng-template let-movie pTemplate="item">
     <div class="movie-item">
-      <div class="mv-img">
-        <img src="{{ movie.src }}" class="w-101" />
-      </div>
+      <a href="#">
+        <div class="mv-img" (click)="openSnackBar()">
+          <img src="{{ movie.src }}" class="w-101" /></div
+      ></a>
       <div class="title-in">
         <div class="cate">
           <span
             *ngFor="let category of movie.category; index as index"
             class="{{ movie.categoryColor[index] }}"
-            ><a href="#">{{ category }}</a></span
+            ><button class="category" (click)="openSnackBar()">
+              {{ category }}
+            </button></span
           >
         </div>
         <h6>
-          <a href="#">{{ movie.name }}</a>
+          <a href="#" (click)="openSnackBar()">{{ movie.name }}</a>
         </h6>
         <p>
           <mat-icon aria-hidden="false" aria-label="star">star</mat-icon

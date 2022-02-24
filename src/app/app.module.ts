@@ -34,6 +34,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRippleModule } from '@angular/material/core';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './component/header/signup/signup.component';
@@ -105,6 +106,7 @@ import { ClientRegistrationComponent } from './component/client-registration/cli
     MatRadioModule,
     MatSlideToggleModule,
     MatRippleModule,
+    SplitButtonModule,
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

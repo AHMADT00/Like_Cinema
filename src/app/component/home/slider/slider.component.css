@@ -1007,3 +1007,12 @@ p-carousel .p-carousel {
 :host ::ng-deep .p-carousel .p-carousel-content .p-carousel-next {
   color: #b01855;
 }
+
+.category {
+  background: none;
+  border: none;
+  color: white;
+  padding: 0px 2px;
+  font-weight: bold;
+  font-size: 13px;
+}

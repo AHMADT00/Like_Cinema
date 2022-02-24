@@ -1,18 +1,18 @@
 <div class="exitdev">
-  <button class="exit" mat-button mat-dialog-close>x</button>
+  <button class="exit" mat-button mat-dialog-close>✖</button>
 </div>
 <div class="formdiv">
   <h1>Sign Up</h1>
   <p>
     <mat-form-field appearance="outline" style="width: 79%">
       <mat-label>User name</mat-label>
-      <input [(ngModel)]="userName" matInput />
+      <input [(ngModel)]="userName" matInput required (change)="check()" />
     </mat-form-field>
   </p>
   <p>
     <mat-form-field appearance="outline" style="width: 79%">
       <mat-label>Email</mat-label>
-      <input [(ngModel)]="email" matInput />
+      <input [(ngModel)]="email" matInput required (change)="check()" />
     </mat-form-field>
   </p>
   <p>
@@ -22,6 +22,8 @@
         matInput
         [(ngModel)]="password"
         [type]="hide2 ? 'password' : 'text'"
+        required
+        (change)="check()"
       />
       <button
         mat-icon-button
@@ -41,6 +43,8 @@
         matInput
         [(ngModel)]="passwordconfirm"
         [type]="hide ? 'password' : 'text'"
+        required
+        (change)="check()"
       />
       <button
         mat-icon-button
@@ -56,13 +60,13 @@
   <p>
     <mat-form-field appearance="outline" style="width: 79%">
       <mat-label>Phone number</mat-label>
-      <input [(ngModel)]="phoneNumber" matInput />
+      <input [(ngModel)]="phoneNumber" matInput required (change)="check()" />
     </mat-form-field>
   </p>
   <p>
     <mat-form-field appearance="outline" style="width: 79%">
       <mat-label>Tele number</mat-label>
-      <input [(ngModel)]="teleNumber" matInput />
+      <input [(ngModel)]="teleNumber" matInput required (change)="check()" />
     </mat-form-field>
   </p>
   <p>
@@ -73,8 +77,11 @@
   <br />
 </div>
 <mat-dialog-actions align="end">
-  <button class="signup" (click)="addClient()" mat-stroked-button>
+  <button
+    class="signup"
+    (click)="addClient()"
+    mat-stroked-button
+  >
     Sign Up
   </button>
 </mat-dialog-actions>
-

@@ -11,9 +11,9 @@
 
 .example-sidenav {
   padding: 20px;
-  background: url("../assets/Images/uploads/ft-bg.jpg");
+  background: #0f2133c7 !important;
   position: fixed;
-  top: 87px;
+  top: 93px;
 }
 .click {
   font-size: 20px;
@@ -26,6 +26,7 @@
   background-color: #c2185b;
   opacity: 0.9;
   position: fixed;
+  top: 93px;
   z-index: 1;
 }
 a {

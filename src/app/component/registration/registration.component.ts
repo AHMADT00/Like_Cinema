@@ -42,7 +42,6 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = environment.client.userId;
-    console.log(this.userId);
     this.showTab(this.currentTab);
     this.clientservice.GetClient().subscribe((res) => {
       this.clients = res.map((e: any) => {
@@ -120,7 +119,6 @@ export class RegistrationComponent implements OnInit {
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
   validateForm() {
     var x,
       y,

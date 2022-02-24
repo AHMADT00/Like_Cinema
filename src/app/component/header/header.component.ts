@@ -1,5 +1,5 @@
 import { CookieService } from 'ngx-cookie-service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
@@ -14,9 +14,19 @@ export class HeaderComponent implements OnInit {
   collapsed: boolean = true;
   dialogRef;
   loggedin = ' ';
+  fixed;
   constructor(public dialog: MatDialog, private cookieservice: CookieService) {}
   ngOnInit(): void {
-    this.loggedin = environment.client.isadmin
+    this.loggedin = environment.client.isadmin;
+  }
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll($event) {
+    const numb = window.scrollY;
+    if (numb >= 300) {
+      this.fixed = 'fixed-top header-fixed';
+    } else {
+      this.fixed = '';
+    }
   }
   logout() {
     this.cookieservice.deleteAll();
