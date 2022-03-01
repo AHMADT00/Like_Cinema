@@ -6,6 +6,7 @@ import { RegistrationComponent } from 'src/app/component/registration/registrati
 import { EditclientComponent } from 'src/app/component/editclient/editclient.component';
 import { EditmoviesComponent } from 'src/app/component/editmovies/editmovies.component';
 import { ClientRegistrationComponent } from 'src/app/component/client-registration/client-registration.component';
+import { EditRegistartionComponent } from 'src/app/component/edit-registartion/edit-registartion.component';
 
 export const environment = {
   production: false,
@@ -20,6 +21,7 @@ export const environment = {
   routers: [
     { path: '', component: HomeComponent },
     { path: 'registration', component: RegistrationComponent },
+    { path: 'registration/edit', component: EditRegistartionComponent },
     { path: 'admin/editMovies', component: EditmoviesComponent },
     { path: 'admin/likeClients', component: EditclientComponent },
     {

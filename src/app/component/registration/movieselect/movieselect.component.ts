@@ -47,8 +47,8 @@ export class MovieselectComponent implements OnInit, OnChanges {
     y = x[index].getElementsByTagName('mat-radio-button');
     for (i = 0; i < y.length; i++) {
       if (
-        (y[i].className ==
-          'mat-radio-button example-radio-button mat-accent ng-star-inserted not')
+        y[i].className ==
+        'mat-radio-button example-radio-button mat-accent ng-star-inserted not'
       ) {
         y[i].className =
           'mat-radio-button example-radio-button mat-accent ng-star-inserted mat-radio-checked';
@@ -59,6 +59,7 @@ export class MovieselectComponent implements OnInit, OnChanges {
         id: movie.id,
         movieName: movie.name,
         passengers: passenger,
+        src: movie.src,
       };
       this.y.push(this.selected);
     } else if (movie.checked) {
@@ -76,6 +77,7 @@ export class MovieselectComponent implements OnInit, OnChanges {
             id: movie.id,
             movieName: movie.name,
             passengers: passenger,
+            src: movie.src,
           };
           this.y.push(this.selected);
         }
@@ -94,8 +96,8 @@ export class MovieselectComponent implements OnInit, OnChanges {
       y = x[index].getElementsByTagName('mat-radio-button');
       for (i = 0; i < y.length; i++) {
         if (
-          (y[i].className ==
-            'mat-radio-button example-radio-button mat-accent ng-star-inserted mat-radio-checked')
+          y[i].className ==
+          'mat-radio-button example-radio-button mat-accent ng-star-inserted mat-radio-checked'
         ) {
           y[i].className =
             'mat-radio-button example-radio-button mat-accent ng-star-inserted not';

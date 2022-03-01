@@ -69,11 +69,13 @@ export class RegistrationComponent implements OnInit {
   }
   Submit() {
     if (this.SnackBar == 'success') {
+      this.datafromchild.forEach((element) => {
+        element.clientCarPlate = this.carPlateFormControl.value;
+      });
       this.registration = {
         clientId: this.userId,
         clientUserName: this.userNameFormControl.value,
         clientPhoneNumber: this.phoneNumberFormControl.value,
-        clientCarPlate: this.carPlateFormControl.value,
         selectedMovies: this.datafromchild,
       };
       this.register.AddRegistration(this.registration);

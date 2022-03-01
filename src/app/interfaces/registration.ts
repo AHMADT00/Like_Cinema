@@ -3,6 +3,6 @@ export interface Registration {
   clientId: string;
   clientUserName: string;
   clientPhoneNumber: string;
-  clientCarPlate: string;
   selectedMovies: SelectedMovie[];
+  checked?: boolean;
 }

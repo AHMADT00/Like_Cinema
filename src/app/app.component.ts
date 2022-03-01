@@ -2,6 +2,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,3 +38,5 @@ export class AppComponent implements OnInit {
     });
   }
 }
+
+

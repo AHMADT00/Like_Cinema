@@ -54,6 +54,7 @@ import { LoginComponent } from './component/header/login/login.component';
 import { AddmovieComponent } from './component/editmovies/addmovie/addmovie.component';
 import { InTheaterComponent } from './component/home/in-theater/in-theater.component';
 import { ClientRegistrationComponent } from './component/client-registration/client-registration.component';
+import { EditRegistartionComponent } from './component/edit-registartion/edit-registartion.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { ClientRegistrationComponent } from './component/client-registration/cli
     AddmovieComponent,
     InTheaterComponent,
     ClientRegistrationComponent,
+    EditRegistartionComponent,
   ],
   imports: [
     NgbModule,

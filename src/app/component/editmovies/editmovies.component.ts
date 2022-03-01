@@ -350,9 +350,6 @@ export class DeleteSuccessComponent {
   ) {}
 
   UndoDelete() {
-    // console.log(undoFile);
-    // this.ref = this.firestorage.ref(`Movie Images/${undoFile.name}`);
-    // this.ref.put(undoFile);
     undo = true;
     undoMovies.forEach((movie) => {
       this.movieser.AddMovie(movie);
